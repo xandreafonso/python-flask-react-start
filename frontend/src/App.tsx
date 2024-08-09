@@ -15,7 +15,7 @@ export function App() {
     <header className="flex items-center justify-between p-4 border-b-2">
       <div className="flex gap-2 text-xl">
         <Smartphone />
-        Meu App
+        One App
       </div>
 
       <div className="flex items-center gap-4">
