@@ -5,26 +5,22 @@ import {
   Settings,
   BarChart,
   Smartphone,
+  LogOut,
 } from "lucide-react";
-import { ModeToggle } from './components/Mode-toggle';
 
 export function App() {
 
   return <>  
-  <div className="h-full flex flex-col">
-    <header className="flex items-center justify-between p-4 border-b-2">
-      <div className="flex gap-2 text-xl">
-        <Smartphone />
-        One App
-      </div>
+  <div className="h-full flex">
+    <aside className="h-full w-60 flex flex-col gap-5 bg-secondary">
+      <header className="h-20 pl-4 flex items-center">
+        <div className="flex gap-2 text-xl">
+          <Smartphone />
+          One App
+        </div>
+      </header>
 
-      <div className="flex items-center gap-4">
-        <ModeToggle />
-      </div>
-    </header>
-
-    <main className="flex-1 flex">
-      <aside className="w-60 p-4 border-r-2 flex flex-col justify-between">
+      <div className="h-full flex flex-col justify-between">
         <nav className="w-full flex flex-col gap-2">
           <LinkItem href="/">
             <BarChart className="w-4" />
@@ -36,16 +32,17 @@ export function App() {
           </LinkItem>
         </nav>
 
-        <div className="flex flex-col gap-4">
-          <Button>
+        <nav className="m-2 py-2 flex flex-col gap-4">
+          <Button variant="link" className="flex gap-4 items-start justify-start text-primary">
+            <LogOut />
             Sair
           </Button>
-        </div>
-      </aside>
+        </nav>
+      </div>
+    </aside>    
 
-      <article className="p-4 flex-1">
-        <Outlet />
-      </article>
+    <main className="w-full flex-1 p-4 flex">
+      <Outlet />      
     </main>
   </div>
   </>
@@ -53,7 +50,7 @@ export function App() {
 
 function LinkItem({ href, children }: { href: string, children: React.ReactNode }) {
   return (
-    <Link to={href} className="w-full p-2 px-4 flex gap-2 hover:bg-foreground hover:text-background rounded">
+    <Link to={href} className="w-full p-2 px-4 flex gap-2 hover:bg-foreground hover:text-background">
       {children}
     </Link>
   );
