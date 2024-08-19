@@ -1,12 +1,17 @@
-import { Link, Outlet } from 'react-router-dom'
-import { Button } from './components/ui/button';
-
+import { Link, Outlet, useLocation } from 'react-router-dom'
 import {
   Settings,
   BarChart,
   Smartphone,
   LogOut,
+  CreditCard,
+  Handshake,
+  Bitcoin,
+  Target,
 } from "lucide-react";
+import clsx from 'clsx';
+
+import { Button } from './components/ui/button';
 
 export function App() {
 
@@ -22,10 +27,31 @@ export function App() {
 
       <div className="h-full flex flex-col justify-between">
         <nav className="w-full flex flex-col gap-2">
-          <LinkItem href="/">
+          <LinkItem href="/dashboard">
             <BarChart className="w-4" />
             Dashboard
-          </LinkItem>        
+          </LinkItem>
+
+          <LinkItem href="/clients">
+            <Handshake className="w-4" />
+            Clientes
+          </LinkItem>
+
+          <LinkItem href="/projects">
+            <Target className="w-4" />
+            Projetos
+          </LinkItem>
+
+          <LinkItem href="/income">
+            <Bitcoin className="w-4" />
+            Receitas
+          </LinkItem>
+
+          <LinkItem href="/expenses">
+            <CreditCard className="w-4" />
+            Despesas
+          </LinkItem>
+
           <LinkItem href="/settings">
             <Settings className="w-4" />
             Configurar
@@ -49,8 +75,11 @@ export function App() {
 }
 
 function LinkItem({ href, children }: { href: string, children: React.ReactNode }) {
+
+  const location = useLocation();
+
   return (
-    <Link to={href} className="w-full p-2 px-4 flex gap-2 hover:bg-foreground hover:text-background">
+    <Link to={href} className={clsx("w-full p-2 px-4 flex gap-2 hover:bg-foreground hover:text-background", { "bg-foreground text-background": location.pathname.startsWith(href) })}>
       {children}
     </Link>
   );
