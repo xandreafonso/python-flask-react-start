@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 export function SettingsPage() {
@@ -43,7 +43,7 @@ function LinkItem({ href, children }: { href: string, children: React.ReactNode 
   const location = useLocation();
 
   return (
-    <Link to={href} className={clsx("w-full p-2 px-4 flex hover:bg-secondary rounded", { "bg-secondary": location.pathname.startsWith(href) })}>
+    <Link to={href} className={cn("w-full p-2 px-4 flex hover:bg-secondary rounded", { "bg-secondary": location.pathname.startsWith(href) })}>
       {children}
     </Link>
   );

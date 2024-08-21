@@ -9,9 +9,9 @@ import {
   Bitcoin,
   Target,
 } from "lucide-react";
-import clsx from 'clsx';
 
 import { Button } from './components/ui/button';
+import { cn } from './lib/utils';
 
 export function App() {
 
@@ -79,7 +79,7 @@ function LinkItem({ href, children }: { href: string, children: React.ReactNode 
   const location = useLocation();
 
   return (
-    <Link to={href} className={clsx("w-full p-2 px-4 flex gap-2 hover:bg-foreground hover:text-background", { "bg-foreground text-background": location.pathname.startsWith(href) })}>
+    <Link to={href} className={cn("w-full p-2 px-4 flex gap-2 hover:bg-foreground hover:text-background", { "bg-foreground text-background": location.pathname.startsWith(href) })}>
       {children}
     </Link>
   );
